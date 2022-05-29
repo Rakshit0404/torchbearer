@@ -33,6 +33,8 @@ app.post('/newclass', async (req, res)=>{
     console.log(req.body);
     const newclass = await new classes({subject:req.body.subject, standard:req.body.standard});
     await newclass.save();
+
+    res.redirect(`${newclass._id}`);
 });
 
 app.listen(3000, () => {
